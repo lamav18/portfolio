@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lama Albalawi — Electrical and Computer Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #020a14;
+    --white: #fafaf8;
+    --off-white: #f4f2ee;
+    --warm-gray: #e8e5df;
+    --mid-gray: #9e9b95;
+    --dark-gray: #4a4743;
+    --gold: #966a3e;
+    --gold-light: #f5ecd8;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 4rem; background: rgba(250,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--warm-gray); }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--black); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; color: var(--dark-gray); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--black); }
+
+  .hero { min-height: 100vh; display: flex; padding-top: 80px; position: relative; overflow: hidden; background-color: var(--white); }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 4rem 4rem; width: 100%; position: relative; z-index: 1; }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--gold); }
+
+  h1 { font-family: 'DM Serif Display', serif; font-size: clamp(4.5rem, 7vw, 7rem); line-height: 1.2; color: var(--black); margin-bottom: 2rem; font-weight: 400; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; }
+
+  .gem-wrap {
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: middle;
+    margin: 0 0.02em;
+    position: relative;
+    top: -0.2em;
+    filter: drop-shadow(0 4px 12px rgba(216,173,129,0.5)) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+  .gem-outer { width: 100%; height: 100%; }
+  .gem-spin { transform-origin: 50px 50px; animation: spinGem 3s linear infinite; }
+  @keyframes spinGem { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .hero-desc { font-size: 1rem; color: var(--dark-gray); max-width: 44ch; line-height: 1.8; font-weight: 300; margin: 0 auto 0; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .btn-primary { background: var(--black); color: var(--white); padding: 0.85rem 2rem; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; font-weight: 500; transition: background 0.2s, transform 0.2s; }
+  .btn-primary:hover { background: var(--dark-gray); transform: translateY(-1px); }
+  .btn-outline { border: 1px solid var(--black); color: var(--black); padding: 0.85rem 2rem; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; font-weight: 500; transition: background 0.2s, transform 0.2s; }
+  .btn-outline:hover { background: var(--off-white); transform: translateY(-1px); }
+
+  section { padding: 6rem 4rem; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .section-label::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--gold); }
+  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 3rem; }
+
+  #about { background: var(--black); color: var(--white); border-radius: 28px; margin: 0 0; }  #about .section-label { color: var(--gold); }
+  #about .section-label::before { background: var(--gold); }
+  #about h2 { color: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { color: #b0aca5; font-weight: 300; line-height: 1.9; margin-bottom: 1.25rem; font-size: 1.02rem; }
+  .skills-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+  .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 1rem; border: 1px solid #2a2a2a; font-size: 0.88rem; color: #b0aca5; }
+  .skill-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: rgba(184,149,74,0.12); padding: 0.2rem 0.6rem; }
+
+  #projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; background: var(--white); }
+  .project-card { background: var(--white); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.3s, box-shadow 0.3s; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--warm-gray); }
+  .project-card:hover { background: var(--off-white); box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+  .project-card.featured { grid-column: span 1; background: var(--off-white); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .project-number { font-family: 'DM Serif Display', serif; font-size: 5rem; color: var(--warm-gray); line-height: 1; margin-bottom: 1.5rem; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; font-weight: 400; color: var(--black); margin-bottom: 1rem; line-height: 1.2; }
+  .project-desc { font-size: 0.9rem; color: var(--dark-gray); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .tag { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark-gray); border: 1px solid var(--warm-gray); padding: 0.25rem 0.65rem; }
+  .award-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--gold-light); color: #7a5e1e; font-size: 0.75rem; font-weight: 500; padding: 0.4rem 0.85rem; margin-top: 0.4rem; }
+  .award-badge::before { content: '★'; font-size: 0.65rem; }
+  .project-meta { font-size: 0.73rem; color: var(--mid-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+
+  .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.75rem; }
+  .media-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+  .media-grid.one-col { grid-template-columns: 1fr; }
+
+
+  #contact { background: var(--off-white); border-top: 1px solid var(--warm-gray); }
+  .contact-grid { display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+  .contact-links { display: flex; flex-direction: row; gap: 1.5rem; flex-wrap: wrap; justify-content: center; width: 100%; }
+  .contact-link { width: 280px; display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem 1rem 0.75rem; background: var(--white); border: 1px solid var(--warm-gray); text-decoration: none; color: var(--black); font-size: 0.9rem; transition: border-color 0.2s, transform 0.2s; }
+  .contact-link:hover { border-color: var(--gold); transform: translateX(4px); }
+  .contact-link-icon { width: 36px; height: 36px; background: var(--off-white); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .contact-link-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid-gray); display: block; margin-bottom: 0.1rem; }
+
+  footer { background: var(--black); color: var(--mid-gray); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+  footer span { color: var(--gold); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow { animation: fadeUp 0.7s ease 0.1s both; }
+  h1 { animation: fadeUp 0.7s ease 0.2s both; }
+  .hero-desc { animation: fadeUp 0.7s ease 0.3s both; }
+  .hero-cta { animation: fadeUp 0.7s ease 0.4s both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { min-height: auto; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .contact-links { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Lama Albalawi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <h1>
+      <span style="display:block; font-size:0.35em; font-weight:300; letter-spacing:0.2em; text-transform:uppercase; color:var(--black); margin-bottom:0.1em;">My</span>
+      <span style="display:flex; align-items:center;">P<span class="gem-wrap">
+        <svg class="gem-outer" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="outerGrad" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#2a2a2a"/>
+              <stop offset="100%" stop-color="#0f0f0f"/>
+            </radialGradient>
+            <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f5ecd8"/>
+              <stop offset="40%" stop-color="#d8ad81"/>
+              <stop offset="60%" stop-color="#b8954a"/>
+             <stop offset="100%" stop-color="#8a6a2e"/>
+            </linearGradient>
+            <linearGradient id="shineGrad" x1="0%" y1="0%" x2="50%" y2="50%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 0 C55 15,65 15,75 10 C70 25,75 35,90 35 C80 45,80 55,90 65 C75 65,70 75,75 90 C65 85,55 85,50 100 C45 85,35 85,25 90 C30 75,25 65,10 65 C20 55,20 45,10 35 C25 35,30 25,25 10 C35 15,45 15,50 0Z" fill="url(#outerGrad)"/>
+          <g class="gem-spin">
+            <path d="M50 20 L80 50 L50 80 L20 50 Z" fill="url(#diamondGrad)"/>
+            <path d="M50 20 L20 50 L50 50 Z" fill="url(#shineGrad)"/>
+            <path d="M50 28 L72 50 L50 72 L28 50 Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </span>rtfolio</span>
+    </h1>
+    <p class="hero-desc">I am Lama Albalawi, a Saudi Electrical & Computer Engineer specialized in autonomous systems, AI-driven control, and UAV simulation.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2>My Background</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Saudi Electrical and Computer Engineer with a deep focus on robotics, autonomous systems, and AI-driven solutions. Throughout my studies, I worked on projects that go beyond theory, solving real human problems with measurable impact, work that earned international recognition at invention exhibitions in Geneva and Seoul.</p>
+
+      <div style="margin-top: 2.5rem;">
+        <div style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+          <span style="display:block; width:2rem; height:1px; background:var(--gold);"></span>Education
+        </div>
+        <div style="border: 1px solid #2a2a2a; padding: 1.25rem; margin-bottom: 0.75rem;">
+          <div style="font-size: 0.95rem; color: #e8e5df; font-weight: 500; margin-bottom: 0.25rem;">BSc in Electrical and Computer Engineering</div>
+          <div style="font-size: 0.82rem; color: var(--mid-gray);">King Abdulaziz University · Jeddah, Saudi Arabia · Dec 2025</div>
+          <div style="font-size: 0.82rem; color: var(--mid-gray); margin-top: 0.25rem;">GPA: 4.61 / 5.00</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem;">
+        <div style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+          <span style="display:block; width:2rem; height:1px; background:var(--gold);"></span>Experience
+        </div>
+        <div style="border: 1px solid #2a2a2a; padding: 1.25rem; margin-bottom: 0.75rem;">
+          <div style="font-size: 0.95rem; color: #e8e5df; font-weight: 500; margin-bottom: 0.25rem;">UAV Simulation Engineer Intern</div>
+          <div style="font-size: 0.82rem; color: var(--mid-gray);">Prince Sultan Defense Studies & Research Center · Jun – Dec 2025</div>
+        </div>
+        <div style="border: 1px solid #2a2a2a; padding: 1.25rem;">
+          <div style="font-size: 0.95rem; color: #e8e5df; font-weight: 500; margin-bottom: 0.25rem;">Solution Engineer Intern</div>
+          <div style="font-size: 0.82rem; color: var(--mid-gray);">EVINEX Startup · Jun – Dec 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+        <span style="display:block; width:2rem; height:1px; background:var(--gold);"></span>Technical Skills
+      </div>
+      <div class="skill-item">ROS (Robotic Operating System) <span class="skill-tag">Robotics</span></div>
+      <div class="skill-item">Gazebo / PX4 Simulation <span class="skill-tag">UAV</span></div>
+      <div class="skill-item">Sensor Fusion & Integration <span class="skill-tag">Hardware</span></div>
+      <div class="skill-item">AI & Motion Analysis <span class="skill-tag">AI/ML</span></div>
+      <div class="skill-item">Python & C++ <span class="skill-tag">Software</span></div>
+      <div class="skill-item">System Modeling & Evaluation <span class="skill-tag">Systems</span></div>
+      <div style="margin-top: 1.5rem;">
+        <div style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem;">
+          <span style="display:block; width:2rem; height:1px; background:var(--gold);"></span>Languages
+        </div>
+        <div style="border: 1px solid #2a2a2a; padding: 1.25rem;">
+          <div style="font-size: 0.95rem; color: #e8e5df; font-weight: 500;">Arabic & English</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Selected work</div>
+  <h2>Projects & Recognition</h2>
+  <div class="projects-grid">
+
+    <!-- PROJECT 01 -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-number">01</div>
+        <div class="project-meta">King Abdulaziz University · Aug 2024 – May 2025</div>
+        <div class="project-title">Robotic Leg Device for Rehabilitation</div>
+        <div class="project-tags">
+          <span class="tag">Robotics</span>
+          <span class="tag">Sensor Integration</span>
+          <span class="tag">AI Motion Analysis</span>
+          <span class="tag">ROS</span>
+          <span class="tag">Mechatronics</span>
+        </div>
+        <p class="project-desc">Collaborated in developing an AI-powered robotic rehabilitation device to support patients with lower limb weakness in performing therapeutic exercises independently at home. The system intelligently adapts exercise intensity in real time based on each patient's condition, delivering personalized recovery tailored to individual needs.</p>
+        <div class="award-badge">Seoul International Invention Fair 2025</div><br>
+        <div class="award-badge">2 International Special Prizes — Indonesia & Taiwan</div>
+      </div>
+      <div>
+        <div class="media-grid" style="grid-template-columns: 1fr 2.5fr;">
+          <figure style="margin:0;">
+            <img src="images/MuttakaPrototype2.jpeg" alt="Prototype" style="width:100%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block;">
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Prototype Image</figcaption>
+          </figure>
+          <figure style="margin:0; height:100%;">
+            <video src="videos/rehab-tutorial.mp4" controls style="width:100%; height:90%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block; object-fit:cover;"></video>
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Tutorial Video</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-number">02</div>
+        <div class="project-meta">King Abdulaziz University · Sep – Dec 2021</div>
+        <div class="project-title">Parkinson's Stabilization Spoon</div>
+        <div class="project-tags">
+          <span class="tag">Assistive Tech</span>
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">Safety Design</span>
+        </div>
+        <p class="project-desc">Collaborated in developing a tremor-stabilization spoon to support Parkinson's patients during eating, with a temperature-based safety alert to prevent burns.</p>
+        <div class="award-badge">Silver Medal — Inventions Geneva 2022</div>
+      </div>
+      <div>
+        <div class="media-grid" style="grid-template-columns: 1fr 2.5fr;">
+          <figure style="margin:0;">
+            <img src="images/SpoonPrototype.png" alt="Prototype" style="width:100%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block;">
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Prototype Image</figcaption>
+          </figure>
+          <figure style="margin:0; height:100%;">
+            <video src="videos/spoon-demo.mp4" controls style="width:100%; height:90%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block; object-fit:cover;"></video>
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Demo Video</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-number">03</div>
+        <div class="project-meta">Prince Sultan Defense Studies & Research Center · Jun – Dec 2025</div>
+        <div class="project-title">UAV Simulation Environment</div>
+        <div class="project-tags">
+          <span class="tag">Gazebo</span>
+          <span class="tag">PX4</span>
+          <span class="tag">ROS</span>
+          <span class="tag">Autonomous Systems</span>
+        </div>
+        <p class="project-desc">Built a simulation environment for a UAV model named VTBIRD using Gazebo simulation engine, PX4 Autopilot, and ROS. Evaluated controller responses and vehicle stability for early identification of performance limitations and failure scenarios. In addition, developed an obstacle avoidance feature.</p>
+        <div class="award-badge">Paper Publication — SSD26</div>
+      </div>
+      <div>
+        <div class="media-grid" style="grid-template-columns: 1.5fr 1fr;">
+          <figure style="margin:0; height:100%;">
+            <video src="videos/Simulation.mp4" controls style="width:100%; height:90%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block; object-fit:cover;"></video>
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Simulation Video</figcaption>
+          </figure>
+          <figure style="margin:0; height:100%; display:flex; flex-direction:column;">
+            <img src="images/combined_trajectory3.jpg" alt="Trajectory Analysis" style="width:100%; flex:1; object-fit:cover; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block;">
+            <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Trajectory Analysis</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 04 -->
+    <div class="project-card featured">
+      <div>
+        <div class="project-number">04</div>
+        <div class="project-meta">EVINEX Startup · Jun – Dec 2025</div>
+        <div class="project-title">EV Adoption Website</div>
+        <div class="project-tags">
+          <span class="tag">Web Development</span>
+          <span class="tag">Data Analysis</span>
+          <span class="tag">UX Design</span>
+        </div>
+        <p class="project-desc">Developed an Electric Vehicle (EV) adoption website for the Saudi context (data collected from a survey) with interactive tools for a list of locally available EV models, cost comparison, range estimation, and charging-station visualization.</p>
+      </div>
+      <div class="media-grid one-col" style="margin-top:1.5rem;">
+        <figure style="margin:0; height:100%;">
+          <video src="videos/WebVid.mp4" controls style="width:100%; height:90%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:block; object-fit:cover;"></video>
+          <figcaption style="font-size:0.75rem; color:var(--mid-gray); text-transform:uppercase; letter-spacing:0.08em; margin-top:0.5rem; text-align:center;">Website Video</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Let's connect</div>
+  <div class="contact-grid">
+    <div>
+      <p style="color: var(--dark-gray); font-weight: 300; line-height: 1.9;">Based in Jeddah, Saudi Arabia — open to relocation.</p>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:lama.ab.albalawi@gmail.com" class="contact-link">
+        <div class="contact-link-icon">✉</div>
+        <div>
+          <span class="contact-link-label">Email</span>
+          lama.ab.albalawi@gmail.com
+        </div>
+      </a>
+      <a href="tel:+966554380910" class="contact-link">
+        <div class="contact-link-icon">☏</div>
+        <div>
+          <span class="contact-link-label">Phone</span>
+          +966 554 380 910
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/LamaAlbalawi" target="_blank" class="contact-link">
+        <div class="contact-link-icon">in</div>
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          linkedin.com/in/LamaAlbalawi
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2025 <span>Lama Albalawi</span>. All rights reserved.</div>
+  <div>Electrical & Computer Engineer</div>
+</footer>
+
+</body>
+</html>
